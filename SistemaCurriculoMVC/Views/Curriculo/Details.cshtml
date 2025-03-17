@@ -1,0 +1,93 @@
+﻿@model SistemaCurriculoMVC.Models.CurriculoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Incluir o CSS no cabeçalho -->
+<link rel="stylesheet" href="~/css/curriculo.css" />
+
+<div class="curriculo-container">
+    <div class="curriculo-header">
+        <h2>@Model.Nome</h2>
+        <p>Currículo Profissional</p>
+    </div>
+
+    <div class="curriculo-info">
+        <div>
+            <p>📌 <strong>CPF:</strong> <span>@Model.CPF</span></p>
+            <p>📞 <strong>Telefone:</strong> <span>@Model.Telefone</span></p>
+            <p>📧 <strong>Email:</strong> <span>@Model.Email</span></p>
+        </div>
+        <div>
+            <p>📍 <strong>Endereço:</strong> <span>@Model.Endereco</span></p>
+            <p>💰 <strong>Pretensão Salarial:</strong> <span>R$ @Model.PretensaoSalarial.ToString("N2")</span></p>
+            <p>💼 <strong>Cargo Pretendido:</strong> <span>@Model.CargoPretendido</span></p>
+            <p>🎂 <strong>Data de Nascimento:</strong> <span>@Model.DataNascimento.ToString("dd/MM/yyyy")</span></p>
+        </div>
+    </div>
+
+    <div class="curriculo-section">
+        <h3>🎓 Formação Acadêmica</h3>
+        <ul class="curriculo-list">
+            @if (!string.IsNullOrEmpty(Model.Formacao1))
+            {
+                <li>@Model.Formacao1</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Formacao2))
+            {
+                <li>@Model.Formacao2</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Formacao3))
+            {
+                <li>@Model.Formacao3</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Formacao4))
+            {
+                <li>@Model.Formacao4</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Formacao5))
+            {
+                <li>@Model.Formacao5</li>
+            }
+        </ul>
+    </div>
+
+    <div class="curriculo-section">
+        <h3>💼 Experiência Profissional</h3>
+        <ul class="curriculo-list">
+            @if (!string.IsNullOrEmpty(Model.Experiencia1))
+            {
+                <li>@Model.Experiencia1</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Experiencia2))
+            {
+                <li>@Model.Experiencia2</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Experiencia3))
+            {
+                <li>@Model.Experiencia3</li>
+            }
+        </ul>
+    </div>
+
+    <div class="curriculo-section">
+        <h3>🌍 Idiomas</h3>
+        <ul class="curriculo-list">
+            @if (!string.IsNullOrEmpty(Model.Idioma1))
+            {
+                <li>@Model.Idioma1</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Idioma2))
+            {
+                <li>@Model.Idioma2</li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Idioma3))
+            {
+                <li>@Model.Idioma3</li>
+            }
+        </ul>
+    </div>
+
+    <a href="/Curriculo/Index" class="btn-voltar">Voltar</a>
+</div>

@@ -1,0 +1,85 @@
+﻿@model SistemaCurriculoMVC.Models.CurriculoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro de Currículo</h2>
+
+<form asp-action="Salvar" method="post" class="mt-3 needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label asp-for="Nome" class="control-label">Nome</label>
+            <input asp-for="Nome" class="form-control" required />
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="CPF" class="control-label">CPF</label>
+            <input asp-for="CPF" class="form-control" required />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label asp-for="Telefone" class="control-label">Telefone</label>
+            <input asp-for="Telefone" class="form-control" />
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" type="email" class="form-control" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Endereco" class="control-label">Endereço</label>
+        <input asp-for="Endereco" class="form-control" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label asp-for="PretensaoSalarial" class="control-label">Pretensão Salarial</label>
+            <input asp-for="PretensaoSalarial" type="number" step="0.01" class="form-control" />
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="CargoPretendido" class="control-label">Cargo Pretendido</label>
+            <input asp-for="CargoPretendido" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+        <input asp-for="DataNascimento" type="date" class="form-control" value="@Model?.DataNascimento.ToString("yyyy-MM-dd")" />
+    </div>
+
+    <h3>Formação Acadêmica</h3>
+    @for (int i = 1; i <= 5; i++)
+    {
+            <div class="form-group">
+                <label>Formação @i</label>
+                <input asp-for="@Model.Formacao1" class="form-control" name="Formacao@(i)" />
+            </div>
+    }
+
+    <h3>Experiências Profissionais</h3>
+    @for (int i = 1; i <= 3; i++)
+    {
+            <div class="form-group">
+                <label>Experiência @i</label>
+                <input asp-for="@Model.Experiencia1" class="form-control" name="Experiencia@(i)" />
+            </div>
+    }
+
+    <h3>Idiomas</h3>
+    @for (int i = 1; i <= 3; i++)
+    {
+            <div class="form-group">
+                <label>Idioma @i</label>
+                <input asp-for="@Model.Idioma1" class="form-control" name="Idioma@(i)" />
+            </div>
+    }
+
+    <br />
+    <button type="submit" class="btn btn-success">Salvar Dados</button>
+</form>
